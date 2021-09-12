@@ -30,6 +30,7 @@ class HomeController extends Controller
      */
     public function index(TransactionDataTable $dataTable)
     {
+
         return $dataTable->render('home');
 
     }
@@ -45,6 +46,19 @@ class HomeController extends Controller
         return $dataTable->render('successful');
 
     }
+
+    public function dashboard(){
+
+        return view('dashboard');
+    }
+
+    public function search(){
+
+        return view('search');
+    }
+
+
+
 
 
 

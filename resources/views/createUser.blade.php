@@ -10,7 +10,7 @@
       <h1>Dashboard</h1>
       <ol class="breadcrumb">
         <li><a href="{{ route('home') }}">Home</a></li>
-        <li><i class="fa fa-angle-right"></i> Dashboard</li>
+        <li><i class="fa fa-angle-right"></i> Create New User</li>
       </ol>
     </div>
 
@@ -25,30 +25,29 @@
         <div class="col-lg-12">
           <div class="card">
             <div class="card-header bg-blue">
-              <h5 class="m-b-0">Create New User</h5>
+              <h5 class="m-b-0">New User</h5>
             </div>
             <div class="card-body">
-              <form action="#" class="form-horizontal form-bordered">
+              <!-- <form action="#" class="form-horizontal form-bordered"> -->
+              {!! Form::open(['method'=>'POST', 'route'=>'users.store', 'class'=>'form-horizontal form-bordered']) !!}
                 <div class="form-body">
                   <div class="form-group row">
                     <label class="control-label text-right col-md-3">First Name</label>
                     <div class="col-md-9">
-                      <input placeholder="First Name" class="form-control" type="text">
+                    {{ Form::text('full_name',null,['class'=>'form-control',  'required'=>'required','id'=>'fName' ]) }}
+
                       </div>
                   </div>
                   <div class="form-group row">
                     <label class="control-label text-right col-md-3">Email</label>
                     <div class="col-md-9">
-                      <input placeholder="Email Address" class="form-control" type="email">
+                      {{ Form::text('email',null,['class'=>'form-control', 'required'=>'required','id'=>'email' ]) }}
                       </div>
                   </div>
                   <div class="form-group row">
                     <label class="control-label text-right col-md-3">Role</label>
                     <div class="col-md-9">
-                      <select class="form-control custom-select">
-                        <option value="">Super Administrator</option>
-                        <option value="">Administrator</option>
-                      </select>
+                    {{ Form::select('role_id',[''=>'Select role'] + $roles,null,['class'=>'form-control custom-select', 'id'=>'role' ]) }}
                     </div>
                   </div>
 
@@ -56,14 +55,14 @@
                   <div class="form-group row">
                     <label class="control-label text-right col-md-3">Password</label>
                     <div class="col-md-9">
-                      <input class="form-control" type="password">
+                    {{ Form::password('password',['class'=>'form-control', 'required'=>'required','id'=>'password' ]) }}
                     </div>
                   </div>
 
                   <div class="form-group row">
                     <label class="control-label text-right col-md-3">Confirm Password</label>
                     <div class="col-md-9">
-                      <input class="form-control" type="password">
+                    {{ Form::password('password_confirmation',['class'=>'form-control', 'required'=>'required','id'=>'password' ]) }}
                     </div>
                   </div>
 
@@ -79,7 +78,7 @@
                     </div>
                   </div>
                 </div>
-              </form>
+                {!! Form::close() !!}
             </div>
           </div>
         </div>

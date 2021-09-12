@@ -47,7 +47,7 @@
 
                 <div class="col-md-9 left">
                     <div class="topTxt">LogIn</div>
-                    <div class="downTxt">Enter your email and password </div>
+                    <div class="downTxt">Enter your username and password </div>
 
                 </div>
 
@@ -93,6 +93,7 @@
     @endif
 </div>
 <div>
+<!-- <a href="dashboard.html" type="submit" class="btn btn-primary btn-block" id="">Sign In</a>  -->
 <button type="submit" class="btn btn-primary btn-block" id="login" name="login">Sign In</button>
 
 </div>

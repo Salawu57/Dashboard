@@ -15,6 +15,8 @@
 <!-- Favicon -->
 <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('img/favicon-16x16.png') }}">
 
+
+
 <!-- Google Font -->
 <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
 
@@ -25,9 +27,14 @@
 <link rel="stylesheet" href="{{ asset('css/style.css')}}">
 <link rel="stylesheet" href="{{ asset('css/font-awesome.min.css')}}">
 <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.0.3/css/buttons.dataTables.min.css">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/css/bootstrap-datepicker.css" rel="stylesheet">
+
+
 <link rel="stylesheet" href="{{ asset('css/et-line-font.css')}}">
 <link rel="stylesheet" href="{{ asset('css/themify-icons.css')}}">
 <link rel="stylesheet" href="{{ asset('css/simple-line-icons.css')}}">
+<link href="{{asset('css/toastr.min.css')}}" class="theme-color" rel="stylesheet" type="text/css"/>
+<script src="{{ asset('js/jquery.min.js') }}"></script>
 
 
 
@@ -88,14 +95,22 @@
           <ul class="treeview-menu">
             <li><a href="{{ route('successful') }}"><i class="fa fa-angle-right"></i> Successful </a></li>
             <li><a href="{{ route('failed') }}"><i class="fa fa-angle-right"></i> Failed </a></li>
+            <li><a href="{{ route('search') }}"><i class="fa fa-angle-right"></i> Search Record</a></li>
+
+           
+
           </ul>
         </li>
         <li class="treeview"> <a href="{{ route('home') }}"> <i class="icon-people"></i> <span>Users</span> <span class="pull-right-container"> <i class="fa fa-angle-left pull-right"></i> </span> </a>
         <ul class="treeview-menu">
             <li><a href="{{route('users.index')}}"><i class="fa fa-angle-right"></i>All Users</a></li>
             <li><a href="{{route('users.create')}}"><i class="fa fa-angle-right"></i>Create New User</a></li>
+            <li><a href="{{route('users.profile')}}"><i class="fa fa-angle-right"></i>Profile</a></li>
+
           </ul>
         </li>
+
+
 
 
       </ul>
@@ -103,7 +118,7 @@
     <!-- /.sidebar -->
   </aside>
 
-
+  @include('layouts.alert')
   @yield('content')
 
 
@@ -126,6 +141,7 @@
 
 <script src="{{asset('vendor/datatables/buttons.server-side.js')}}"></script>
 
+
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
 
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
@@ -138,14 +154,38 @@
 
 <script src="{{ asset('js/popper.min.js') }}"></script>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.15.1/moment.min.js"></script>
+
 <!-- v4.0.0-alpha.6 -->
 <script src="{{ asset('js/bootstrap.min.js') }}"></script>
 
 
-
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/js/bootstrap-datepicker.js"></script>
 
 <!-- template -->
 <script src="{{ asset('js/adminkit.js') }}"></script>
+
+<script src="{{asset('js/toastr.min.js')}}"></script>
+
+<script>
+
+$(function () {
+    $('#example1').DataTable()
+    $('#example2').DataTable({
+      'paging'      : true,
+      'lengthChange': false,
+      'searching'   : false,
+      'ordering'    : true,
+      'info'        : true,
+      'autoWidth'   : false
+    })
+  })
+
+</script>
+
+
+
+
 
 
 @stack('scripts')
