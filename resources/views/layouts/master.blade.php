@@ -46,9 +46,9 @@
     <!-- Logo -->
     <a href="{{ route('home') }}" class="logo blue-bg">
     <!-- mini logo for sidebar mini 50x50 pixels -->
-    <span class="logo-mini"><img src="{{ asset('img/logo-n.png')}}" alt=""></span>
+    <span class="logo-mini"><img src="{{ asset('img/logoS.png')}}" alt=""></span>
     <!-- logo for regular state and mobile devices -->
-    <span class="logo-lg"><img src="{{ asset('img/logo.png') }}" alt=""></span> </a>
+    <span class="logo-lg"><img src="{{ asset('img/logoM.png') }}" alt=""></span> </a>
     <!-- Header Navbar -->
     <nav class="navbar blue-bg navbar-static-top">
 
