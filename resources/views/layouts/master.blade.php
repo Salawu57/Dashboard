@@ -5,7 +5,7 @@
 <head>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<title>CreditShare Dashboard</title>
+<title>bill.easy Dashboard</title>
 <!-- Tell the browser to be responsive to screen width -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -44,7 +44,7 @@
 <div class="wrapper boxed-wrapper">
   <header class="main-header">
     <!-- Logo -->
-    <a href="index.html" class="logo blue-bg">
+    <a href="{{ route('home') }}" class="logo blue-bg">
     <!-- mini logo for sidebar mini 50x50 pixels -->
     <span class="logo-mini"><img src="{{ asset('img/logo-n.png')}}" alt=""></span>
     <!-- logo for regular state and mobile devices -->
@@ -97,14 +97,16 @@
             <li><a href="{{ route('failed') }}"><i class="fa fa-angle-right"></i> Failed </a></li>
             <li><a href="{{ route('search') }}"><i class="fa fa-angle-right"></i> Search Record</a></li>
 
-           
+
 
           </ul>
         </li>
         <li class="treeview"> <a href="{{ route('home') }}"> <i class="icon-people"></i> <span>Users</span> <span class="pull-right-container"> <i class="fa fa-angle-left pull-right"></i> </span> </a>
         <ul class="treeview-menu">
+
             <li><a href="{{route('users.index')}}"><i class="fa fa-angle-right"></i>All Users</a></li>
             <li><a href="{{route('users.create')}}"><i class="fa fa-angle-right"></i>Create New User</a></li>
+
             <li><a href="{{route('users.profile')}}"><i class="fa fa-angle-right"></i>Profile</a></li>
 
           </ul>

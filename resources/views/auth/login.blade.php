@@ -6,7 +6,7 @@
 <head>
 
     <!-- Title -->
-    <title>i.Sec Dashboard</title>
+    <title>bill.easy Dashboard</title>
 
     <meta content="width=device-width, initial-scale=1" name="viewport"/>
     <meta charset="UTF-8">
@@ -56,7 +56,7 @@
                     <div class="imgBox">
 
 
-                        <img src="{{'img/iseclogo.gif'}}" />
+
 
                     </div>
 
