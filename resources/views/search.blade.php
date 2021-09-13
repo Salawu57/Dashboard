@@ -32,20 +32,20 @@
           <div class="col-md-2">
           <fieldset class="form-group">
               <label>From Date</label>
-              <input class="form-control date form-control-serch" id="helpInputTop" type="text">
+              <input class="form-control date form-control-serch" type="text" id="from_date">
             </fieldset>
           </div>
 
           <div class="col-md-2">
           <fieldset class="form-group">
               <label>To Date</label>
-              <input class="form-control form-control-serch  date" id="helpInputTop" type="text">
+              <input class="form-control form-control-serch  date"  type="text" id="to_date">
             </fieldset>
           </div>
 
           <div class="col-md-2">
           <fieldset class="form-group">
-              <button type="button" class="form-control btn btn-primary search-btn">Search Record</button>
+              <button type="button" class="form-control btn btn-primary search-btn" id="search">Search Record</button>
 
             </fieldset>
           </div>
@@ -93,5 +93,74 @@
     $('.date').datepicker({
        format: 'yyyy-mm-dd'
      });
+
+
+ function load_data(from_date = '', to_date = '')
+ {
+  $('#trans').DataTable({
+   processing: true,
+   serverSide: true,
+   ajax: {
+    url:'{{ route("search.record")}}',
+
+    data:{from_date:from_date, to_date:to_date}
+
+   },
+   columns: [
+    {
+     data:'trackingID',
+     name:'trackingID'
+    },
+    {
+     data:'msisdn',
+     name:'msisdn'
+    },
+    {
+     data:'amount',
+     name:'amount'
+    },
+    {
+     data:'status',
+     name:'status'
+    },
+    {
+     data:'transactionDate',
+     name:'transactionDate'
+    },{
+     data:'vendDate',
+     name:'vendDate'
+    }
+   ]
+  });
+ }
+
+ $('#search').click(function(){
+  var from_date = $('#from_date').val();
+  var to_date = $('#to_date').val();
+  if(from_date != '' &&  to_date != '')
+  {
+   $('#order_table').DataTable().destroy();
+   load_data(from_date, to_date);
+
+   console.log(from_date +" "+ to_date);
+
+  }
+  else
+  {
+   alert('Both Date is required');
+  }
+ });
+
+
+
+
+
+
+
+
+
+
+
+
 </script>
 @endpush

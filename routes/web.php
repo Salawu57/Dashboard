@@ -29,7 +29,7 @@ Route::get('/pages', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/search', [App\Http\Controllers\HomeController::class, 'search'])->name('search');
+Route::get('/search', [App\Http\Controllers\HomeController::class, 'search'])->name('search.record');
 Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'dashboard'])->name('dashboard');
 Route::get('/failed', [App\Http\Controllers\HomeController::class, 'failedTrans'])->name('failed');
 Route::get('/successful', [App\Http\Controllers\HomeController::class, 'successfulTrans'])->name('successful');

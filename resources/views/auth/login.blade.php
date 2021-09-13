@@ -13,7 +13,8 @@
     <!-- Styles -->
     <!-- <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600' rel='stylesheet' type='text/css'> -->
     <!-- v4.0.0 -->
-<link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
+<link rel="stylesheet" href="{{ asset('https://dash.isec.ng/'css/bootstrap.min.css') }}">
+
 
 <!-- Favicon -->
 <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('img/favicon-16x16.png') }}">

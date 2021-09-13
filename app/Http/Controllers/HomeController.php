@@ -11,6 +11,7 @@ use App\DataTables\TransactionsDataTable;
 use App\DataTables\SuccessfulTransactionDataTable;
 
 
+
 class HomeController extends Controller
 {
     /**
@@ -21,6 +22,7 @@ class HomeController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+
     }
 
     /**
@@ -54,11 +56,27 @@ class HomeController extends Controller
 
     public function search(){
 
-        return view('search');
+
+        $data = Airtime_Transactions::all();
+
+        return $data;
+    // if(request()->ajax())
+
+    //  {
+    //   if(!empty($request->from_date))
+    //   {
+
+    //    $data = Airtime_Transactions::select("*")
+
+    //    ->whereBetween('transactionDate', ['2021-08-03', '2021-08-31'])
+
+    //    ->get();
+
+    //    return $data;
+
+    //   }
+    //  }
     }
-
-
-
 
 
 

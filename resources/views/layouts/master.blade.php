@@ -95,7 +95,7 @@
           <ul class="treeview-menu">
             <li><a href="{{ route('successful') }}"><i class="fa fa-angle-right"></i> Successful </a></li>
             <li><a href="{{ route('failed') }}"><i class="fa fa-angle-right"></i> Failed </a></li>
-            <li><a href="{{ route('search') }}"><i class="fa fa-angle-right"></i> Search Record</a></li>
+            <li><a href="{{ route('search.record') }}"><i class="fa fa-angle-right"></i> Search Record</a></li>
 
 
 
