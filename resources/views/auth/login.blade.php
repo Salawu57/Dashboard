@@ -15,7 +15,7 @@
     <!-- v4.0.0 -->
 
 
-<link rel="stylesheet" href="{{ asset('css/bootstrap.min.css')}}">
+<link rel="stylesheet" href="{{ secure_asset('css/bootstrap.min.css')}}">
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css">
 
@@ -31,8 +31,8 @@
 " rel="stylesheet">
 
 <!-- Theme style -->
-<link rel="stylesheet" href="{{ asset('css/style.css')}}">
-<link rel="stylesheet" href="{{ asset('css/font-awesome.min.css')}}">
+<link rel="stylesheet" href="{{ secure_asset('css/style.css')}}">
+<link rel="stylesheet" href="{{ secure_asset('css/font-awesome.min.css')}}">
 
 
 </head>
@@ -112,7 +112,7 @@
 </section>
 
 <!-- Javascripts -->
-<script src="{{ asset('js/jquery.min.js') }}"></script>
+<script src="{{ secure_asset('js/jquery.min.js') }}"></script>
 
 <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
 
