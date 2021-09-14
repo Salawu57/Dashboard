@@ -136,6 +136,12 @@
 
   $('#searchBtn').click(function(){
 
+    if($.fn.DataTable.isDataTable( '#trans' )){
+
+    console.log(" am on please ");
+
+    }
+
       $('#trans').DataTable().draw(true);
 
   });

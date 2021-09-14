@@ -13,7 +13,12 @@
     <!-- Styles -->
     <!-- <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600' rel='stylesheet' type='text/css'> -->
     <!-- v4.0.0 -->
-<link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
+
+
+<link rel="stylesheet" href="{{ asset('css/bootstrap.min.css')}}">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css">
+
 
 
 <!-- Favicon -->
