@@ -54,28 +54,80 @@ class HomeController extends Controller
         return view('dashboard');
     }
 
+
     public function search(){
 
+        return view('search');
+    }
 
-        $data = Airtime_Transactions::all();
 
-        return $data;
-    // if(request()->ajax())
+    public function searchtrans()
+    {
+        $transQuery = Airtime_Transactions::query();
 
-    //  {
-    //   if(!empty($request->from_date))
-    //   {
+        $start_date = (!empty($_GET["start_date"])) ? ($_GET["start_date"]) : ('');
+        $end_date = (!empty($_GET["end_date"])) ? ($_GET["end_date"]) : ('');
+        $trackingId = (!empty($_GET["trackid"])) ? ($_GET["trackid"]) : ('');
+        $phone =(!empty($_GET["phone"])) ? ($_GET["phone"]) : ('');
 
-    //    $data = Airtime_Transactions::select("*")
+        if($start_date && $end_date && $trackingId && $phone){
 
-    //    ->whereBetween('transactionDate', ['2021-08-03', '2021-08-31'])
+         $start_date = date('Y-m-d', strtotime($start_date));
+         $end_date = date('Y-m-d', strtotime($end_date));
 
-    //    ->get();
+         $transQuery->whereBetween('transactionDate', [$start_date, $end_date])
+                    ->where('trackingID', '=', $trackingId)
+                    ->where('msisdn', '=', $phone)
+                        ->get();
+        }else if($start_date && $end_date){
 
-    //    return $data;
+            $start_date = date('Y-m-d', strtotime($start_date));
+            $end_date = date('Y-m-d', strtotime($end_date));
 
-    //   }
-    //  }
+            $transQuery->whereBetween('transactionDate', [$start_date, $end_date])
+
+                        ->get();
+
+            }else if($trackingId && $phone){
+
+            $transQuery
+                       ->where('trackingID', '=', $trackingId)
+                       ->where('msisdn', '=', $phone)
+                           ->get();
+
+            }else if($trackingId){
+
+                $transQuery
+                ->where('trackingID', '=', $trackingId)
+
+                 ->get();
+
+            }else if($phone){
+
+                $transQuery
+                ->where('msisdn', '=', $phone)
+                ->get();
+
+            }else if($start_date){
+                $start_date = date('Y-m-d', strtotime($start_date));
+
+            $transQuery
+            ->where('transactionDate', '=', $start_date)
+            ->get();
+
+             }else if($end_date){
+            $end_date = date('Y-m-d', strtotime($end_date));
+            $transQuery
+            ->where('transactionDate', '=', $end_date)
+            ->get();
+
+        }
+
+
+
+        return datatables()->of($transQuery)
+            ->make(true);
+
     }
 
 

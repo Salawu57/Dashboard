@@ -39,4 +39,4 @@ Route::get('/profile', [App\Http\Controllers\UserController::class, 'profile'])-
 Route::post('/removeUser', [App\Http\Controllers\UserController::class, 'removeUser'])->name('users.remove');
 Route::post('/changePassword', [App\Http\Controllers\UserController::class, 'changePassword'])->name('users.changePassword');
 Route::post('/updateProfile', [App\Http\Controllers\UserController::class, 'updateProfile'])->name('users.updateProfile');
-
+Route::get('searchtrans', [App\Http\Controllers\HomeController::class, 'searchtrans'])->name('search.report');
