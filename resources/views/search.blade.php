@@ -94,9 +94,19 @@
      });
 
 
-     $('#trans').DataTable({
+
+  $('#searchBtn').click(function(){
+
+    if($.fn.DataTable.isDataTable( '#trans' )){
+
+        $('#trans').DataTable().clear().destroy();
+
+    }
+
+    $('#trans').DataTable({
          processing: true,
          serverSide: true,
+         pageLength: 25,
          ajax: {
           url: "{{ url('searchtrans') }}",
           type: 'GET',
@@ -134,15 +144,12 @@
                ]
       });
 
-  $('#searchBtn').click(function(){
-
-    if($.fn.DataTable.isDataTable( '#trans' )){
-
-    console.log(" am on please ");
-
-    }
-
       $('#trans').DataTable().draw(true);
+
+      $('#start_date').val('');
+      $('#end_date').val('');
+      $('#trackid').val('');
+      $('#phone').val('');
 
   });
 
