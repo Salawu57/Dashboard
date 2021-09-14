@@ -7,10 +7,10 @@
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <div class="content-header sty-one">
-      <h1>Dashboard</h1>
+      <h1>Dashboard - All Transactions</h1>
       <ol class="breadcrumb">
         <li><a href="{{ route('home') }}">Home</a></li>
-        <li><i class="fa fa-angle-right"></i> Dashboard</li>
+        <li><i class="fa fa-angle-right"></i> Dashboard All Tranasaction</li>
       </ol>
     </div>
 

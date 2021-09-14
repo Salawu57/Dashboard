@@ -86,17 +86,17 @@
       <!-- sidebar menu -->
       <ul class="sidebar-menu" data-widget="tree">
 
-        <li class="treeview"> <a href="#"> <i class="icon-home"></i> <span>Dashboard</span> <span class="pull-right-container"> <i class="fa fa-angle-left pull-right"></i> </span> </a>
+        <li class="treeview"> <a href="#"> <i class="icon-home"></i> <span>Transactions</span> <span class="pull-right-container"> <i class="fa fa-angle-left pull-right"></i> </span> </a>
         <ul class="treeview-menu">
             <li><a href="{{ route('home') }}"><i class="fa fa-angle-right"></i>All Transactions</a></li>
             <li><a href="{{ route('successful') }}"><i class="fa fa-angle-right"></i> Successful </a></li>
             <li><a href="{{ route('failed') }}"><i class="fa fa-angle-right"></i> Failed </a></li>
           </ul>
         </li>
-        <li class="treeview"> <a href="{{ route('home') }}"> <i class="icon-search"></i> <span>Transactions</span> <span class="pull-right-container"> <i class="fa fa-angle-left pull-right"></i> </span> </a>
+        <li class="treeview"> <a href="{{ route('home') }}"> <i class="icon-search"></i> <span>Search</span> <span class="pull-right-container"> <i class="fa fa-angle-left pull-right"></i> </span> </a>
           <ul class="treeview-menu">
 
-            <li><a href="{{ route('search.record') }}"><i class="fa fa-angle-right"></i> Search Record</a></li>
+            <li><a href="{{ route('search.record') }}"><i class="fa fa-angle-right"></i> Search transaction</a></li>
 
 
 

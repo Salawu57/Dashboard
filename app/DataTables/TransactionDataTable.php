@@ -43,20 +43,16 @@ class TransactionDataTable extends DataTable
      */
     public function html()
     {
+        // searching: false, paging: false, info: false
         return $this->builder()
                     ->setTableId('transaction-table')
                     ->columns($this->getColumns())
                     ->minifiedAjax()
-                    ->dom('Blftip')
                     ->parameters([
-                        'exportable' => true,
-                        'printable' => true,
-                        "pageLength" =>25,
-                    ])
-                    ->buttons(
-                        Button::make('excel'),
-                        Button::make('csv')
-                    );
+                        "searching" => false,
+                        "paging" => false,
+                    ]);
+
     }
 
     /**

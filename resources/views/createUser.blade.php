@@ -10,7 +10,7 @@
       <h1>Dashboard</h1>
       <ol class="breadcrumb">
         <li><a href="{{ route('home') }}">Home</a></li>
-        <li><i class="fa fa-angle-right"></i> Create New User</li>
+        <li><i class="fa fa-angle-right"></i> Create New User </li>
       </ol>
     </div>
 

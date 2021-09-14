@@ -5946,3 +5946,16 @@ div.dt-buttons {
     color:#fff !important;
 }
 
+.selectText{
+
+height: calc(2.25rem + 8px) !important;
+}
+
+.trackid{
+ display: none;
+}
+
+.phoneCont{
+    display: block;
+}
+

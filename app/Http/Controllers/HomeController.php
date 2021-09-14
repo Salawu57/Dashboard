@@ -30,22 +30,22 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index(TransactionDataTable $dataTable)
+    public function index()
     {
 
-        return $dataTable->render('home');
+        return view('home');
 
     }
 
-    public function failedTrans(FailedTransactionsDataTable $dataTable)
+    public function failedTransV(FailedTransactionsDataTable $dataTable)
     {
-        return $dataTable->render('failed');
+        return view('failed');
 
     }
 
-    public function successfulTrans(SuccessfulTransactionDataTable $dataTable)
+    public function successfulTransV(SuccessfulTransactionDataTable $dataTable)
     {
-        return $dataTable->render('successful');
+        return view('successful');
 
     }
 
@@ -70,13 +70,13 @@ class HomeController extends Controller
         $trackingId = (!empty($_GET["trackid"])) ? ($_GET["trackid"]) : ('');
         $phone =(!empty($_GET["phone"])) ? ($_GET["phone"]) : ('');
 
-        if($start_date && $end_date && $trackingId && $phone){
+        if($start_date && $end_date && $phone){
 
          $start_date = date('Y-m-d', strtotime($start_date));
          $end_date = date('Y-m-d', strtotime($end_date));
 
          $transQuery->whereBetween('transactionDate', [$start_date, $end_date])
-                    ->where('trackingID', '=', $trackingId)
+
                     ->where('msisdn', '=', $phone)
                         ->get();
         }else if($start_date && $end_date){
@@ -88,12 +88,138 @@ class HomeController extends Controller
 
                         ->get();
 
-            }else if($trackingId && $phone){
+
+            }else if($trackingId){
+
+                $transQuery
+                ->where('trackingID', '=', $trackingId)
+
+                 ->get();
+
+            }else if($phone){
+
+                $transQuery
+                ->where('msisdn', '=', $phone)
+                ->get();
+
+            }else if($start_date){
+                $start_date = date('Y-m-d', strtotime($start_date));
 
             $transQuery
-                       ->where('trackingID', '=', $trackingId)
-                       ->where('msisdn', '=', $phone)
-                           ->get();
+            ->where('transactionDate', '=', $start_date)
+            ->get();
+
+             }else if($end_date){
+            $end_date = date('Y-m-d', strtotime($end_date));
+            $transQuery
+            ->where('transactionDate', '=', $end_date)
+            ->get();
+
+        }
+
+
+
+        return datatables()->of($transQuery)
+            ->make(true);
+
+    }
+
+
+
+
+
+    public function failedtrans()
+    {
+        $transQuery = Airtime_Transactions::where('status', '<>','Vended Successfully');
+
+        $start_date = (!empty($_GET["start_date"])) ? ($_GET["start_date"]) : ('');
+        $end_date = (!empty($_GET["end_date"])) ? ($_GET["end_date"]) : ('');
+        $trackingId = (!empty($_GET["trackid"])) ? ($_GET["trackid"]) : ('');
+        $phone =(!empty($_GET["phone"])) ? ($_GET["phone"]) : ('');
+
+        if($start_date && $end_date && $phone){
+
+         $start_date = date('Y-m-d', strtotime($start_date));
+         $end_date = date('Y-m-d', strtotime($end_date));
+
+         $transQuery->whereBetween('transactionDate', [$start_date, $end_date])
+
+                    ->where('msisdn', '=', $phone)
+                        ->get();
+        }else if($start_date && $end_date){
+
+            $start_date = date('Y-m-d', strtotime($start_date));
+            $end_date = date('Y-m-d', strtotime($end_date));
+
+            $transQuery->whereBetween('transactionDate', [$start_date, $end_date])
+
+                        ->get();
+
+
+            }else if($trackingId){
+
+                $transQuery
+                ->where('trackingID', '=', $trackingId)
+
+                 ->get();
+
+            }else if($phone){
+
+                $transQuery
+                ->where('msisdn', '=', $phone)
+                ->get();
+
+            }else if($start_date){
+                $start_date = date('Y-m-d', strtotime($start_date));
+
+            $transQuery
+            ->where('transactionDate', '=', $start_date)
+            ->get();
+
+             }else if($end_date){
+            $end_date = date('Y-m-d', strtotime($end_date));
+            $transQuery
+            ->where('transactionDate', '=', $end_date)
+            ->get();
+
+        }
+
+
+
+        return datatables()->of($transQuery)
+            ->make(true);
+
+    }
+
+
+
+    public function successfultrans()
+    {
+        $transQuery = Airtime_Transactions::where('status', 'Vended Successfully');
+
+        $start_date = (!empty($_GET["start_date"])) ? ($_GET["start_date"]) : ('');
+        $end_date = (!empty($_GET["end_date"])) ? ($_GET["end_date"]) : ('');
+        $trackingId = (!empty($_GET["trackid"])) ? ($_GET["trackid"]) : ('');
+        $phone =(!empty($_GET["phone"])) ? ($_GET["phone"]) : ('');
+
+        if($start_date && $end_date && $phone){
+
+         $start_date = date('Y-m-d', strtotime($start_date));
+         $end_date = date('Y-m-d', strtotime($end_date));
+
+         $transQuery->whereBetween('transactionDate', [$start_date, $end_date])
+
+                    ->where('msisdn', '=', $phone)
+                        ->get();
+        }else if($start_date && $end_date){
+
+            $start_date = date('Y-m-d', strtotime($start_date));
+            $end_date = date('Y-m-d', strtotime($end_date));
+
+            $transQuery->whereBetween('transactionDate', [$start_date, $end_date])
+
+                        ->get();
+
 
             }else if($trackingId){
 

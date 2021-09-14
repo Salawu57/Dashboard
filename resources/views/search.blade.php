@@ -7,36 +7,53 @@
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <div class="content-header sty-one">
-      <h1>Dashboard</h1>
+      <h1>Dashboard - Search Transaction</h1>
       <ol class="breadcrumb">
         <li><a href="{{ route('home')}}">Home</a></li>
-        <li><i class="fa fa-angle-right"></i> Search</li>
+        <li><i class="fa fa-angle-right"></i>Search</li>
       </ol>
     </div>
 
     <!-- Main content -->
     <div class="content">
+
     <div class="row">
-          <div class="col-md-3">
-            <fieldset class="form-group">
-              <label>Tracking ID</label>
-              <input class="form-control form-control-serch" id="trackid" type="text">
-            </fieldset>
-          </div>
-          <div class="col-md-3">
-            <fieldset class="form-group">
-              <label>MSISDN</label>
-              <input class="form-control form-control-serch" id="phone" type="text">
-            </fieldset>
-          </div>
-          <div class="col-md-2">
+    <div class="col-md-10">
+    <div class="row">
+    <div class="col-md-2">
+     <fieldset class="form-group">
+      <label>Filter By</label>
+  <!-- <input class="form-control form-control-serch" id="trackid" type="text"> -->
+        <select class="form-control  custom-select selectText" id="filterBy">
+            <option value="msisdn">MSISDN</option>
+            <option value="trackingid">Tracking ID</option>
+        </select>
+      </fieldset>
+      </div>
+
+      <div class="col-md-2 trackid" id="trackCont">
           <fieldset class="form-group">
-              <label>From Date</label>
-              <input class="form-control date form-control-serch" type="text" id="start_date">
+              <label>Tracking ID</label>
+              <input class="form-control form-control-serch" type="text" id="trackid" >
             </fieldset>
           </div>
 
-          <div class="col-md-2">
+          <div class="col-md-2 phoneCont" id="phoneCont">
+          <fieldset class="form-group">
+              <label>MSISDN</label>
+              <input class="form-control form-control-serch" type="text" id="phone" >
+            </fieldset>
+          </div>
+
+
+      <div class="col-md-2" id="time">
+          <fieldset class="form-group">
+              <label>From Date</label>
+              <input class="form-control date form-control-serch" type="text" id="start_date" >
+            </fieldset>
+          </div>
+
+          <div class="col-md-2" id="time2">
           <fieldset class="form-group">
               <label>To Date</label>
               <input class="form-control form-control-serch  date"  type="text" id="end_date">
@@ -45,12 +62,31 @@
 
           <div class="col-md-2">
           <fieldset class="form-group">
-              <button type="button" class="form-control btn btn-primary search-btn" id="searchBtn">Search Record</button>
+              <button type="button" class="form-control btn btn-primary search-btn" id="searchBtn" >Search Record</button>
 
             </fieldset>
           </div>
-        </div>
 
+
+
+
+
+
+
+
+
+
+
+    </div>
+    </div>
+    <div class="col-md-2">
+    <div class="pull-right">
+              <button type="button" class="btn btn-info search-btn "><i class="fa fa-file-excel-o"></i> Excel</button>
+              <button type="button" class="btn btn-dark search-btn "><i class="fa fa-file-text"></i> CSV</button>
+     </div>
+
+   </div>
+   </div>
       <div class="row">
     <div class="col-12">
                         <div class="card">
@@ -92,6 +128,27 @@
     $('.date').datepicker({
        format: 'yyyy-mm-dd'
      });
+
+
+     $('#filterBy').on('change', function() {
+
+      if(this.value == "trackingid"){
+
+        $("#trackCont").css("display", "block");
+         $("#phoneCont").css("display", "none");
+         $("#time").css("display", "none");
+         $("#time2").css("display", "none");
+
+      }else if(this.value == "msisdn"){
+        $("#trackCont").css("display", "none");
+         $("#phoneCont").css("display", "block");
+         $("#time").css("display", "block");
+         $("#time2").css("display", "block");
+
+      }
+
+     });
+
 
 
 
