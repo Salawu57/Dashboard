@@ -105,8 +105,8 @@
         <li class="treeview"> <a href="{{ route('home') }}"> <i class="icon-people"></i> <span>Users</span> <span class="pull-right-container"> <i class="fa fa-angle-left pull-right"></i> </span> </a>
         <ul class="treeview-menu">
 
-            <li><a href="{{route('users.index')}}"><i class="fa fa-angle-right"></i>All Users</a></li>
-            <li><a href="{{route('users.create')}}"><i class="fa fa-angle-right"></i>Create New User</a></li>
+            <!-- <li><a href="{{route('users.index')}}"><i class="fa fa-angle-right"></i>All Users</a></li>
+            <li><a href="{{route('users.create')}}"><i class="fa fa-angle-right"></i>Create New User</a></li> -->
 
             <li><a href="{{route('users.profile')}}"><i class="fa fa-angle-right"></i>Profile</a></li>
 
