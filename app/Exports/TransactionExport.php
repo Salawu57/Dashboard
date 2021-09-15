@@ -30,8 +30,6 @@ class TransactionExport implements FromQuery
     public function query()
     {
 
-
-
         if(!empty($this->trackingId) && $this->phone == "0" && $this->from_date == "0" && $this->to_date == 0){
 
             return Airtime_Transactions::query()->where('trackingID',  $this->trackingId);

@@ -45,10 +45,7 @@
   <header class="main-header">
     <!-- Logo -->
     <a href="{{ route('home') }}" class="logo blue-bg">
-    <!-- mini logo for sidebar mini 50x50 pixels -->
-    <span class="logo-mini"><img src="{{ asset('img/logoS.png')}}" alt=""></span>
-    <!-- logo for regular state and mobile devices -->
-    <span class="logo-lg"><img src="{{ asset('img/logoM.png') }}" alt=""></span> </a>
+  </a>
     <!-- Header Navbar -->
     <nav class="navbar blue-bg navbar-static-top">
 
@@ -93,7 +90,7 @@
             <li><a href="{{ route('failed') }}"><i class="fa fa-angle-right"></i> Failed </a></li>
           </ul>
         </li>
-        <li class="treeview"> <a href="{{ route('home') }}"> <i class="icon-search"></i> <span>Search</span> <span class="pull-right-container"> <i class="fa fa-angle-left pull-right"></i> </span> </a>
+        <!-- <li class="treeview"> <a href="{{ route('home') }}"> <i class="icon-search"></i> <span>Search</span> <span class="pull-right-container"> <i class="fa fa-angle-left pull-right"></i> </span> </a>
           <ul class="treeview-menu">
 
             <li><a href="{{ route('search.record') }}"><i class="fa fa-angle-right"></i> Search transaction</a></li>
@@ -101,7 +98,7 @@
 
 
           </ul>
-        </li>
+        </li> -->
         <li class="treeview"> <a href="{{ route('home') }}"> <i class="icon-people"></i> <span>Users</span> <span class="pull-right-container"> <i class="fa fa-angle-left pull-right"></i> </span> </a>
         <ul class="treeview-menu">
 
@@ -127,7 +124,7 @@
 
   <footer class="main-footer">
 
-    Copyright © 2021 CreditShare. All rights reserved.</footer>
+    Copyright © 2021 i.Sec. All rights reserved.</footer>
 </div>
 <!-- ./wrapper -->
 
