@@ -43,6 +43,6 @@ Route::post('/updateProfile', [App\Http\Controllers\UserController::class, 'upda
 Route::get('searchtrans', [App\Http\Controllers\HomeController::class, 'searchtrans'])->name('search.report');
 Route::get('successfulTrans', [App\Http\Controllers\HomeController::class, 'successfultrans'])->name('search.successfultrans');
 Route::get('failedTrans', [App\Http\Controllers\HomeController::class, 'failedTrans'])->name('search.failedTrans');
-Route::get('/transactionExport', [App\Http\Controllers\HomeController::class, 'transactionExport']);
+Route::post('/transactionExport', [App\Http\Controllers\HomeController::class, 'transactionExport'])->name('export.transactionExport');
 
 

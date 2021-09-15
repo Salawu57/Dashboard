@@ -29,7 +29,7 @@
             </div>
             <div class="card-body">
               <!-- <form action="#" class="form-horizontal form-bordered"> -->
-              {!! Form::open(['method'=>'POST', 'route'=>'users.store', 'class'=>'form-horizontal form-bordered']) !!}
+              {!! Form::open(['method'=>'GET', 'route'=>'users.store', 'class'=>'form-horizontal form-bordered']) !!}
                 <div class="form-body">
                   <div class="form-group row">
                     <label class="control-label text-right col-md-3">First Name</label>

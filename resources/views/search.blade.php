@@ -21,53 +21,55 @@
     <div class="col-md-10">
     <div class="row">
     <div class="col-md-2">
-     <fieldset class="form-group">
-      <label>Filter By</label>
-  <!-- <input class="form-control form-control-serch" id="trackid" type="text"> -->
-        <select class="form-control  custom-select selectText" id="filterBy">
-            <option value="msisdn">MSISDN</option>
-            <option value="trackingid">Tracking ID</option>
-        </select>
-      </fieldset>
+    {!! Form::open(['method'=>'POST', 'route'=>'export.transactionExport']) !!}
+ <fieldset class="form-group">
+  <label>Filter By</label>
+<!-- <input class="form-control form-control-serch" id="trackid" type="text"> -->
+    <select class="form-control  custom-select selectText" id="filterBy">
+        <option value="msisdn">MSISDN</option>
+        <option value="trackingid">Tracking ID</option>
+    </select>
+  </fieldset>
+  </div>
+
+  <div class="col-md-2 trackid" id="trackCont">
+      <fieldset class="form-group">
+          <label>Tracking ID</label>
+          <input class="form-control form-control-serch" type="text" id="trackid" name="trackid" >
+        </fieldset>
       </div>
 
-      <div class="col-md-2 trackid" id="trackCont">
-          <fieldset class="form-group">
-              <label>Tracking ID</label>
-              <input class="form-control form-control-serch" type="text" id="trackid" >
-            </fieldset>
-          </div>
-
-          <div class="col-md-2 phoneCont" id="phoneCont">
-          <fieldset class="form-group">
-              <label>MSISDN</label>
-              <input class="form-control form-control-serch" type="text" id="phone" >
-            </fieldset>
-          </div>
+      <div class="col-md-2 phoneCont" id="phoneCont">
+      <fieldset class="form-group">
+          <label>MSISDN</label>
+          <input class="form-control form-control-serch" type="text" id="phone" name="phone" >
+        </fieldset>
+      </div>
 
 
-      <div class="col-md-2" id="time">
-          <fieldset class="form-group">
-              <label>From Date</label>
-              <input class="form-control date form-control-serch" type="text" id="start_date" >
-            </fieldset>
-          </div>
+  <div class="col-md-2" id="time">
+      <fieldset class="form-group">
+          <label>From Date</label>
+          <input class="form-control date form-control-serch" type="text" id="start_date" name="start_date" >
+        </fieldset>
+      </div>
 
-          <div class="col-md-2" id="time2">
-          <fieldset class="form-group">
-              <label>To Date</label>
-              <input class="form-control form-control-serch  date"  type="text" id="end_date">
-            </fieldset>
-          </div>
+      <div class="col-md-2" id="time2">
+      <fieldset class="form-group">
+          <label>To Date</label>
+          <input class="form-control form-control-serch  date"  type="text" id="end_date" name="end_date">
+        </fieldset>
+      </div>
 
-          <div class="col-md-2">
-          <fieldset class="form-group">
-              <button type="button" class="form-control btn btn-primary search-btn" id="searchBtn" >Search Record</button>
+      <div class="col-md-2">
+      <fieldset class="form-group">
+          <button type="button" class="form-control btn btn-primary search-btn" id="searchBtn" >Search Record</button>
 
-            </fieldset>
-          </div>
 
-          <div class="col-md-2">
+        </fieldset>
+      </div>
+
+      <div class="col-md-2">
       <fieldset class="form-group">
           <button type="button" class="form-control btn btn-warning search-btn" id="resetBtn" >Reset</button>
 
@@ -75,18 +77,14 @@
         </fieldset>
       </div>
 
-
-
-
-
-
-    </div>
-    </div>
-    <div class="col-md-2">
-    <div class="pull-right">
-              <button type="button" class="btn btn-info search-btn "><i class="fa fa-file-excel-o"></i> Excel</button>
-              <button type="button" class="btn btn-dark search-btn "><i class="fa fa-file-text"></i> CSV</button>
-     </div>
+</div>
+</div>
+<div class="col-md-2">
+<div class="pull-right">
+          <button type="submit"  class="btn btn-info search-btn "><i class="fa fa-file-excel-o"></i> Excel</button>
+          <!-- <button type="button" class="btn btn-dark search-btn "><i class="fa fa-file-text"></i> CSV</button> -->
+ </div>
+</form>
 
    </div>
    </div>

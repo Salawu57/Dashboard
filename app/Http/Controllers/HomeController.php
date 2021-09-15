@@ -9,6 +9,7 @@ use App\DataTables\TransactionDataTable;
 use App\DataTables\FailedTransactionsDataTable;
 use App\DataTables\TransactionsDataTable;
 use App\DataTables\SuccessfulTransactionDataTable;
+use Illuminate\Support\Facades\Input;
 use Maatwebsite\Excel\Excel;
 use App\Exports\TransactionExport;
 use Illuminate\Support\Facades\Session;
@@ -260,9 +261,29 @@ class HomeController extends Controller
 
     }
 
-    public function transactionExport(Excel $excel){
+    public function transactionExport(Request $request, Excel $excel){
 
-        return $excel->download(new TransactionExport,'transactions.xlsx');
+       // "trackid":null,"phone":null,"start_date":null,"end_date":null
+
+        if($request->trackid != null && $request->phone == null && $request->start_date == null && $request->end_date == null){
+
+            return $excel->download(new TransactionExport($request->trackid,"0","0","0"),'transactions.xlsx');
+
+
+        }else if($request->trackid == null && $request->phone != null  && $request->start_date != null && $request->end_date != null){
+
+            return $excel->download(new TransactionExport("0",$request->phone,$request->start_date,$request->end_date),'transactions.xlsx');
+
+        }else if($request->trackid == null && $request->phone != null  && $request->start_date == null && $request->end_date == null){
+
+            return $excel->download(new TransactionExport("0",$request->phone,"0","0"),'transactions.xlsx');
+
+        }else if($request->trackid == null && $request->phone == null  && $request->start_date != null && $request->end_date != null){
+
+            return $excel->download(new TransactionExport("0","0",$request->start_date,$request->end_date),'transactions.xlsx');
+
+        }
+
     }
 
 
