@@ -51,6 +51,9 @@ class TransactionExport implements FromQuery
         //date
         return Airtime_Transactions::query()->whereBetween('transactionDate', [$this->from_date, $this->to_date]);
 
+        }if($this->trackingId =="0" && $this->phone == "0" && $this->from_date == "0" && $this->to_date == "0"){
+
+            return Airtime_Transactions::query()->limit(100);
         }
 
 

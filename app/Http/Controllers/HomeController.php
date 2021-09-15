@@ -263,7 +263,6 @@ class HomeController extends Controller
 
     public function transactionExport(Request $request, Excel $excel){
 
-       // "trackid":null,"phone":null,"start_date":null,"end_date":null
 
         if($request->trackid != null && $request->phone == null && $request->start_date == null && $request->end_date == null){
 
@@ -281,6 +280,13 @@ class HomeController extends Controller
         }else if($request->trackid == null && $request->phone == null  && $request->start_date != null && $request->end_date != null){
 
             return $excel->download(new TransactionExport("0","0",$request->start_date,$request->end_date),'transactions.xlsx');
+
+        }else if($request->trackid == null && $request->phone == null  && $request->start_date == null && $request->end_date == null){
+
+            Session::flash('error', "Please select a filter option");
+
+            return redirect()->back()->withInput();
+
 
         }
 
