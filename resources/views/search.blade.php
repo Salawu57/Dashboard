@@ -67,10 +67,13 @@
             </fieldset>
           </div>
 
+          <div class="col-md-2">
+      <fieldset class="form-group">
+          <button type="button" class="form-control btn btn-warning search-btn" id="resetBtn" >Reset</button>
 
 
-
-
+        </fieldset>
+      </div>
 
 
 
@@ -207,12 +210,20 @@
 
       $('#trans').DataTable().draw(true);
 
-      $('#start_date').val('');
-      $('#end_date').val('');
-      $('#trackid').val('');
-      $('#phone').val('');
 
   });
+
+$('#resetBtn').click(function(){
+
+$('#start_date').val('');
+$('#end_date').val('');
+$('#trackid').val('');
+$('#phone').val('');
+
+
+
+});
+
 
 </script>
 @endpush
