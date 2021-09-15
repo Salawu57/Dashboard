@@ -164,6 +164,10 @@
          processing: true,
          serverSide: true,
          pageLength: 25,
+         language: {
+          "emptyTable": "No Record found"
+          },
+
          ajax: {
           url: "{{ url('searchtrans') }}",
           type: 'GET',

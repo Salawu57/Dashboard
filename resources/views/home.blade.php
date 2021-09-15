@@ -7,7 +7,7 @@
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <div class="content-header sty-one">
-      <h1>Dashboard - All Transactions`</h1>
+      <h1>Dashboard - All Transactions</h1>
       <ol class="breadcrumb">
         <li><a href="{{ route('home') }}">Home</a></li>
         <li><i class="fa fa-angle-right"></i>  Dashboard  </li>
@@ -65,18 +65,17 @@
       <fieldset class="form-group">
           <button type="button" class="form-control btn btn-primary search-btn" id="searchBtn" >Search Record</button>
 
+
         </fieldset>
       </div>
 
+      <div class="col-md-2">
+      <fieldset class="form-group">
+          <button type="button" class="form-control btn btn-warning search-btn" id="resetBtn" >Reset</button>
 
 
-
-
-
-
-
-
-
+        </fieldset>
+      </div>
 
 </div>
 </div>
@@ -157,6 +156,9 @@ $('.date').datepicker({
      serverSide: true,
      pageLength: 25,
      searching: false,
+     language: {
+          "emptyTable": "No Record found"
+          },
      ajax: {
       url: "{{ url('searchtrans') }}",
       type: 'GET',
@@ -194,19 +196,22 @@ $('.date').datepicker({
            ]
   });
 
+$('#resetBtn').click(function(){
 
+$('#start_date').val('');
+$('#end_date').val('');
+$('#trackid').val('');
+$('#phone').val('');
+
+$('#trans').DataTable().draw(true);
+
+});
 
 
 
 $('#searchBtn').click(function(){
 
-
   $('#trans').DataTable().draw(true);
-
-  $('#start_date').val('');
-  $('#end_date').val('');
-  $('#trackid').val('');
-  $('#phone').val('');
 
 });
 

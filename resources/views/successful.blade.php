@@ -157,6 +157,9 @@ $('.date').datepicker({
      serverSide: true,
      pageLength: 25,
      searching: false,
+     language: {
+          "emptyTable": "No Record found"
+          },
      ajax: {
       url: "{{ url('successfulTrans') }}",
       type: 'GET',

@@ -9,6 +9,9 @@ use App\DataTables\TransactionDataTable;
 use App\DataTables\FailedTransactionsDataTable;
 use App\DataTables\TransactionsDataTable;
 use App\DataTables\SuccessfulTransactionDataTable;
+use Maatwebsite\Excel\Excel;
+use App\Exports\TransactionExport;
+use Illuminate\Support\Facades\Session;
 
 
 
@@ -70,6 +73,8 @@ class HomeController extends Controller
         $trackingId = (!empty($_GET["trackid"])) ? ($_GET["trackid"]) : ('');
         $phone =(!empty($_GET["phone"])) ? ($_GET["phone"]) : ('');
 
+
+
         if($start_date && $end_date && $phone){
 
          $start_date = date('Y-m-d', strtotime($start_date));
@@ -88,7 +93,6 @@ class HomeController extends Controller
 
                         ->get();
 
-
             }else if($trackingId){
 
                 $transQuery
@@ -101,6 +105,7 @@ class HomeController extends Controller
                 $transQuery
                 ->where('msisdn', '=', $phone)
                 ->get();
+
 
             }else if($start_date){
                 $start_date = date('Y-m-d', strtotime($start_date));
@@ -116,7 +121,6 @@ class HomeController extends Controller
             ->get();
 
         }
-
 
 
         return datatables()->of($transQuery)
@@ -254,6 +258,11 @@ class HomeController extends Controller
         return datatables()->of($transQuery)
             ->make(true);
 
+    }
+
+    public function transactionExport(Excel $excel){
+
+        return $excel->download(new TransactionExport,'transactions.xlsx');
     }
 
 
