@@ -22,7 +22,7 @@
 <div class="col-md-10">
 <div class="row">
 <div class="col-md-2">
-{!! Form::open(['method'=>'POST', 'route'=>'export.transactionExport']) !!}
+{!! Form::open(['method'=>'POST', 'route'=>'export.successfulTranExport']) !!}
  <fieldset class="form-group">
   <label>Filter By</label>
 <!-- <input class="form-control form-control-serch" id="trackid" type="text"> -->

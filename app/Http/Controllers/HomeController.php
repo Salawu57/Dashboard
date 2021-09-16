@@ -12,6 +12,9 @@ use App\DataTables\SuccessfulTransactionDataTable;
 use Illuminate\Support\Facades\Input;
 use Maatwebsite\Excel\Excel;
 use App\Exports\TransactionExport;
+use App\Exports\FailedExport;
+use App\Exports\SuccessfulExport;
+
 use Illuminate\Support\Facades\Session;
 
 
@@ -49,7 +52,12 @@ class HomeController extends Controller
 
     public function successfulTransV(SuccessfulTransactionDataTable $dataTable)
     {
-        return view('successful');
+
+        //$transQuery = Airtime_Transactions::whereIn('status', ['Vended Successfully', 'Re-Vended Successfully'])->get();
+        //$transQuery = Airtime_Transactions::where('status','Vended Successfully');
+
+        //return $transQuery;
+         return view('successful');
 
     }
 
@@ -135,7 +143,7 @@ class HomeController extends Controller
 
     public function failedtrans()
     {
-        $transQuery = Airtime_Transactions::where('status', '<>','Vended Successfully');
+        $transQuery = Airtime_Transactions::where('status', '<>','Vended Successfully')->where('status', '<>', 'Re-Vended Successfully');
 
         $start_date = (!empty($_GET["start_date"])) ? ($_GET["start_date"]) : ('');
         $end_date = (!empty($_GET["end_date"])) ? ($_GET["end_date"]) : ('');
@@ -200,7 +208,8 @@ class HomeController extends Controller
 
     public function successfultrans()
     {
-        $transQuery = Airtime_Transactions::where('status', 'Vended Successfully');
+        // 129,144
+        $transQuery = $transQuery = Airtime_Transactions::whereIn('status', ['Vended Successfully', 'Re-Vended Successfully']);
 
         $start_date = (!empty($_GET["start_date"])) ? ($_GET["start_date"]) : ('');
         $end_date = (!empty($_GET["end_date"])) ? ($_GET["end_date"]) : ('');
@@ -229,6 +238,7 @@ class HomeController extends Controller
             }else if($trackingId){
 
                 $transQuery
+
                 ->where('trackingID', '=', $trackingId)
 
                  ->get();
@@ -253,8 +263,6 @@ class HomeController extends Controller
             ->get();
 
         }
-
-
 
         return datatables()->of($transQuery)
             ->make(true);
@@ -293,6 +301,70 @@ class HomeController extends Controller
     }
 
 
+
+
+    public function failedTranExport(Request $request, Excel $excel){
+
+
+        if($request->trackid != null && $request->phone == null && $request->start_date == null && $request->end_date == null){
+
+            return $excel->download(new FailedExport($request->trackid,"0","0","0"),'transactions.xlsx');
+
+
+        }else if($request->trackid == null && $request->phone != null  && $request->start_date != null && $request->end_date != null){
+
+            return $excel->download(new FailedExport("0",$request->phone,$request->start_date,$request->end_date),'transactions.xlsx');
+
+        }else if($request->trackid == null && $request->phone != null  && $request->start_date == null && $request->end_date == null){
+
+            return $excel->download(new FailedExport("0",$request->phone,"0","0"),'transactions.xlsx');
+
+        }else if($request->trackid == null && $request->phone == null  && $request->start_date != null && $request->end_date != null){
+
+            return $excel->download(new FailedExport("0","0",$request->start_date,$request->end_date),'transactions.xlsx');
+
+        }else if($request->trackid == null && $request->phone == null  && $request->start_date == null && $request->end_date == null){
+
+            Session::flash('error', "Please select a filter option");
+
+            return redirect()->back()->withInput();
+
+
+        }
+
+    }
+
+
+    public function successfulTranExport(Request $request, Excel $excel){
+
+
+        if($request->trackid != null && $request->phone == null && $request->start_date == null && $request->end_date == null){
+
+            return $excel->download(new SuccessfulExport($request->trackid,"0","0","0"),'transactions.xlsx');
+
+
+        }else if($request->trackid == null && $request->phone != null  && $request->start_date != null && $request->end_date != null){
+
+            return $excel->download(new SuccessfulExport("0",$request->phone,$request->start_date,$request->end_date),'transactions.xlsx');
+
+        }else if($request->trackid == null && $request->phone != null  && $request->start_date == null && $request->end_date == null){
+
+            return $excel->download(new SuccessfulExport("0",$request->phone,"0","0"),'transactions.xlsx');
+
+        }else if($request->trackid == null && $request->phone == null  && $request->start_date != null && $request->end_date != null){
+
+            return $excel->download(new SuccessfulExport("0","0",$request->start_date,$request->end_date),'transactions.xlsx');
+
+        }else if($request->trackid == null && $request->phone == null  && $request->start_date == null && $request->end_date == null){
+
+            Session::flash('error', "Please select a filter option");
+
+            return redirect()->back()->withInput();
+
+
+        }
+
+    }
 
 
 }

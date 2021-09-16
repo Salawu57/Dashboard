@@ -25,10 +25,8 @@ Route::get('/pages', function () {
 });
 
 
-
-
 Auth::routes();
-
+Route::get('logout', [App\Http\Controllers\Auth\LoginController::class, 'logout'])->name('logout');
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/search', [App\Http\Controllers\HomeController::class, 'search'])->name('search.record');
 Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'dashboard'])->name('dashboard');
@@ -44,5 +42,5 @@ Route::get('searchtrans', [App\Http\Controllers\HomeController::class, 'searchtr
 Route::get('successfulTrans', [App\Http\Controllers\HomeController::class, 'successfultrans'])->name('search.successfultrans');
 Route::get('failedTrans', [App\Http\Controllers\HomeController::class, 'failedTrans'])->name('search.failedTrans');
 Route::Post('/transactionExport', [App\Http\Controllers\HomeController::class, 'transactionExport'])->name('export.transactionExport');
-
-
+Route::Post('/failedTranExport', [App\Http\Controllers\HomeController::class, 'failedTranExport'])->name('export.failedTranExport');
+Route::Post('/successfulTranExport', [App\Http\Controllers\HomeController::class, 'successfulTranExport'])->name('export.successfulTranExport');
