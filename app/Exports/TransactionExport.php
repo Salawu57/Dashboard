@@ -55,8 +55,13 @@ class TransactionExport implements FromQuery
 
             return Airtime_Transactions::query()->limit(100);
         }
+    }
 
 
-
+    public function columnFormats(): array
+    {
+        return [
+            'B' => NumberFormat::FORMAT_TEXT
+        ];
     }
 }

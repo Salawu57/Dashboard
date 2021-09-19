@@ -29,7 +29,7 @@ class SuccessfulExport implements FromQuery
 
     public function query()
     {
-        
+
         $transQuery = Airtime_Transactions::whereIn('status', ['Vended Successfully', 'Re-Vended Successfully']);
 
         if(!empty($this->trackingId) && $this->phone == "0" && $this->from_date == "0" && $this->to_date == 0){
@@ -56,4 +56,6 @@ class SuccessfulExport implements FromQuery
             return $transQuery->limit(100);
         }
     }
+
+
 }

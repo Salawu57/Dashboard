@@ -82,8 +82,8 @@
 </div>
 <div class="col-md-2">
 <div class="pull-right">
-          <button type="submit"  class="btn btn-info search-btn "><i class="fa fa-file-excel-o"></i> Excel</button>
-          <!-- <button type="button" class="btn btn-dark search-btn "><i class="fa fa-file-text"></i> CSV</button> -->
+          <!-- <button type="submit"  class="btn btn-info search-btn "><i class="fa fa-file-excel-o"></i> Excel</button> -->
+          <button type="submit" class="btn btn-info search-btn "><i class="fa fa-file-text"></i> CSV</button>
  </div>
 </form>
 
@@ -158,6 +158,7 @@ $('.date').datepicker({
      serverSide: true,
      pageLength: 25,
      searching: false,
+     order: [3, 'desc', 4],
      language: {
           "emptyTable": "No Record found"
           },

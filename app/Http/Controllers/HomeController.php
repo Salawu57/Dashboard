@@ -53,10 +53,6 @@ class HomeController extends Controller
     public function successfulTransV(SuccessfulTransactionDataTable $dataTable)
     {
 
-        //$transQuery = Airtime_Transactions::whereIn('status', ['Vended Successfully', 'Re-Vended Successfully'])->get();
-        //$transQuery = Airtime_Transactions::where('status','Vended Successfully');
-
-        //return $transQuery;
          return view('successful');
 
     }
@@ -75,7 +71,7 @@ class HomeController extends Controller
 
     public function searchtrans()
     {
-        $transQuery = Airtime_Transactions::query();
+        $transQuery = Airtime_Transactions::query()->orderBy('transactionDate', 'desc');
 
         $start_date = (!empty($_GET["start_date"])) ? ($_GET["start_date"]) : ('');
         $end_date = (!empty($_GET["end_date"])) ? ($_GET["end_date"]) : ('');
@@ -130,8 +126,6 @@ class HomeController extends Controller
             ->get();
 
         }
-
-
         return datatables()->of($transQuery)
             ->make(true);
 
@@ -274,20 +268,20 @@ class HomeController extends Controller
 
         if($request->trackid != null && $request->phone == null && $request->start_date == null && $request->end_date == null){
 
-            return $excel->download(new TransactionExport($request->trackid,"0","0","0"),'transactions.xlsx');
+            return $excel->download(new TransactionExport($request->trackid,"0","0","0"),'transactions.csv');
 
 
         }else if($request->trackid == null && $request->phone != null  && $request->start_date != null && $request->end_date != null){
 
-            return $excel->download(new TransactionExport("0",$request->phone,$request->start_date,$request->end_date),'transactions.xlsx');
+            return $excel->download(new TransactionExport("0",$request->phone,$request->start_date,$request->end_date),'transactions.csv');
 
         }else if($request->trackid == null && $request->phone != null  && $request->start_date == null && $request->end_date == null){
 
-            return $excel->download(new TransactionExport("0",$request->phone,"0","0"),'transactions.xlsx');
+            return $excel->download(new TransactionExport("0",$request->phone,"0","0"),'transactions.csv');
 
         }else if($request->trackid == null && $request->phone == null  && $request->start_date != null && $request->end_date != null){
 
-            return $excel->download(new TransactionExport("0","0",$request->start_date,$request->end_date),'transactions.xlsx');
+            return $excel->download(new TransactionExport("0","0",$request->start_date,$request->end_date),'transactions.csv');
 
         }else if($request->trackid == null && $request->phone == null  && $request->start_date == null && $request->end_date == null){
 
@@ -308,20 +302,20 @@ class HomeController extends Controller
 
         if($request->trackid != null && $request->phone == null && $request->start_date == null && $request->end_date == null){
 
-            return $excel->download(new FailedExport($request->trackid,"0","0","0"),'transactions.xlsx');
+            return $excel->download(new FailedExport($request->trackid,"0","0","0"),'transactions.csv');
 
 
         }else if($request->trackid == null && $request->phone != null  && $request->start_date != null && $request->end_date != null){
 
-            return $excel->download(new FailedExport("0",$request->phone,$request->start_date,$request->end_date),'transactions.xlsx');
+            return $excel->download(new FailedExport("0",$request->phone,$request->start_date,$request->end_date),'transactions.csv');
 
         }else if($request->trackid == null && $request->phone != null  && $request->start_date == null && $request->end_date == null){
 
-            return $excel->download(new FailedExport("0",$request->phone,"0","0"),'transactions.xlsx');
+            return $excel->download(new FailedExport("0",$request->phone,"0","0"),'transactions.csv');
 
         }else if($request->trackid == null && $request->phone == null  && $request->start_date != null && $request->end_date != null){
 
-            return $excel->download(new FailedExport("0","0",$request->start_date,$request->end_date),'transactions.xlsx');
+            return $excel->download(new FailedExport("0","0",$request->start_date,$request->end_date),'transactions.csv');
 
         }else if($request->trackid == null && $request->phone == null  && $request->start_date == null && $request->end_date == null){
 
@@ -340,20 +334,20 @@ class HomeController extends Controller
 
         if($request->trackid != null && $request->phone == null && $request->start_date == null && $request->end_date == null){
 
-            return $excel->download(new SuccessfulExport($request->trackid,"0","0","0"),'transactions.xlsx');
+            return $excel->download(new SuccessfulExport($request->trackid,"0","0","0"),'transactions.csv');
 
 
         }else if($request->trackid == null && $request->phone != null  && $request->start_date != null && $request->end_date != null){
 
-            return $excel->download(new SuccessfulExport("0",$request->phone,$request->start_date,$request->end_date),'transactions.xlsx');
+            return $excel->download(new SuccessfulExport("0",$request->phone,$request->start_date,$request->end_date),'transactions.csv');
 
         }else if($request->trackid == null && $request->phone != null  && $request->start_date == null && $request->end_date == null){
 
-            return $excel->download(new SuccessfulExport("0",$request->phone,"0","0"),'transactions.xlsx');
+            return $excel->download(new SuccessfulExport("0",$request->phone,"0","0"),'transactions.csv');
 
         }else if($request->trackid == null && $request->phone == null  && $request->start_date != null && $request->end_date != null){
 
-            return $excel->download(new SuccessfulExport("0","0",$request->start_date,$request->end_date),'transactions.xlsx');
+            return $excel->download(new SuccessfulExport("0","0",$request->start_date,$request->end_date),'transactions.csv');
 
         }else if($request->trackid == null && $request->phone == null  && $request->start_date == null && $request->end_date == null){
 

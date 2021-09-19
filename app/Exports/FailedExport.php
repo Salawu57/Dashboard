@@ -56,9 +56,8 @@ return  $transQuery->whereBetween('transactionDate', [$this->from_date, $this->t
     return $transQuery->limit(100);
 }
 
-
-
-
-
     }
+
+
+
 }
