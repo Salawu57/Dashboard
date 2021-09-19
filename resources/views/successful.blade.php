@@ -158,7 +158,7 @@ $('.date').datepicker({
      serverSide: true,
      pageLength: 25,
      searching: false,
-     order: [3, 'desc', 4],
+     order: [4, 'desc'],
      language: {
           "emptyTable": "No Record found"
           },
