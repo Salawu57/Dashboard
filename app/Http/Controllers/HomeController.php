@@ -263,25 +263,24 @@ class HomeController extends Controller
 
     }
 
-    public function transactionExport(Request $request, Excel $excel){
 
+    public function transactionExport(Request $request, Excel $excel){
 
         if($request->trackid != null && $request->phone == null && $request->start_date == null && $request->end_date == null){
 
-            return $excel->download(new TransactionExport($request->trackid,"0","0","0"),'transactions.csv');
-
+            return $excel->download(new TransactionExport($request->trackid,"0","0","0"),'transactions.xls');
 
         }else if($request->trackid == null && $request->phone != null  && $request->start_date != null && $request->end_date != null){
 
-            return $excel->download(new TransactionExport("0",$request->phone,$request->start_date,$request->end_date),'transactions.csv');
+            return $excel->download(new TransactionExport("0",$request->phone,$request->start_date,$request->end_date),'transactions.xls');
 
         }else if($request->trackid == null && $request->phone != null  && $request->start_date == null && $request->end_date == null){
 
-            return $excel->download(new TransactionExport("0",$request->phone,"0","0"),'transactions.csv');
+            return $excel->download(new TransactionExport("0",$request->phone,"0","0"),'transactions.xls');
 
         }else if($request->trackid == null && $request->phone == null  && $request->start_date != null && $request->end_date != null){
 
-            return $excel->download(new TransactionExport("0","0",$request->start_date,$request->end_date),'transactions.csv');
+            return $excel->download(new TransactionExport("0","0",$request->start_date,$request->end_date),'transactions.xls');
 
         }else if($request->trackid == null && $request->phone == null  && $request->start_date == null && $request->end_date == null){
 
@@ -289,12 +288,18 @@ class HomeController extends Controller
 
             return redirect()->back()->withInput();
 
+        }else if($request->trackid == null && $request->phone == null  && $request->start_date != null && $request->end_date == null){
 
+
+            return $excel->download(new TransactionExport("0","0",$request->start_date,"0"),'transactions.xls');
+
+
+        }else if($request->trackid == null && $request->phone == null  && $request->start_date == null && $request->end_date != null){
+
+            return $excel->download(new TransactionExport("0","0","0",$request->end_date),'transactions.xls');
         }
 
     }
-
-
 
 
     public function failedTranExport(Request $request, Excel $excel){
@@ -302,20 +307,20 @@ class HomeController extends Controller
 
         if($request->trackid != null && $request->phone == null && $request->start_date == null && $request->end_date == null){
 
-            return $excel->download(new FailedExport($request->trackid,"0","0","0"),'transactions.csv');
+            return $excel->download(new FailedExport($request->trackid,"0","0","0"),'transactions.xls');
 
 
         }else if($request->trackid == null && $request->phone != null  && $request->start_date != null && $request->end_date != null){
 
-            return $excel->download(new FailedExport("0",$request->phone,$request->start_date,$request->end_date),'transactions.csv');
+            return $excel->download(new FailedExport("0",$request->phone,$request->start_date,$request->end_date),'transactions.xls');
 
         }else if($request->trackid == null && $request->phone != null  && $request->start_date == null && $request->end_date == null){
 
-            return $excel->download(new FailedExport("0",$request->phone,"0","0"),'transactions.csv');
+            return $excel->download(new FailedExport("0",$request->phone,"0","0"),'transactions.xls');
 
         }else if($request->trackid == null && $request->phone == null  && $request->start_date != null && $request->end_date != null){
 
-            return $excel->download(new FailedExport("0","0",$request->start_date,$request->end_date),'transactions.csv');
+            return $excel->download(new FailedExport("0","0",$request->start_date,$request->end_date),'transactions.xls');
 
         }else if($request->trackid == null && $request->phone == null  && $request->start_date == null && $request->end_date == null){
 
@@ -324,6 +329,15 @@ class HomeController extends Controller
             return redirect()->back()->withInput();
 
 
+        }else if($request->trackid == null && $request->phone == null  && $request->start_date != null && $request->end_date == null){
+
+
+            return $excel->download(new TransactionExport("0","0",$request->start_date,"0"),'transactions.xls');
+
+
+        }else if($request->trackid == null && $request->phone == null  && $request->start_date == null && $request->end_date != null){
+
+            return $excel->download(new TransactionExport("0","0","0",$request->end_date),'transactions.xls');
         }
 
     }
@@ -334,20 +348,20 @@ class HomeController extends Controller
 
         if($request->trackid != null && $request->phone == null && $request->start_date == null && $request->end_date == null){
 
-            return $excel->download(new SuccessfulExport($request->trackid,"0","0","0"),'transactions.csv');
+            return $excel->download(new SuccessfulExport($request->trackid,"0","0","0"),'transactions.xls');
 
 
         }else if($request->trackid == null && $request->phone != null  && $request->start_date != null && $request->end_date != null){
 
-            return $excel->download(new SuccessfulExport("0",$request->phone,$request->start_date,$request->end_date),'transactions.csv');
+            return $excel->download(new SuccessfulExport("0",$request->phone,$request->start_date,$request->end_date),'transactions.xls');
 
         }else if($request->trackid == null && $request->phone != null  && $request->start_date == null && $request->end_date == null){
 
-            return $excel->download(new SuccessfulExport("0",$request->phone,"0","0"),'transactions.csv');
+            return $excel->download(new SuccessfulExport("0",$request->phone,"0","0"),'transactions.xls');
 
         }else if($request->trackid == null && $request->phone == null  && $request->start_date != null && $request->end_date != null){
 
-            return $excel->download(new SuccessfulExport("0","0",$request->start_date,$request->end_date),'transactions.csv');
+            return $excel->download(new SuccessfulExport("0","0",$request->start_date,$request->end_date),'transactions.xls');
 
         }else if($request->trackid == null && $request->phone == null  && $request->start_date == null && $request->end_date == null){
 
@@ -356,6 +370,15 @@ class HomeController extends Controller
             return redirect()->back()->withInput();
 
 
+        }else if($request->trackid == null && $request->phone == null  && $request->start_date != null && $request->end_date == null){
+
+
+            return $excel->download(new TransactionExport("0","0",$request->start_date,"0"),'transactions.xls');
+
+
+        }else if($request->trackid == null && $request->phone == null  && $request->start_date == null && $request->end_date != null){
+
+            return $excel->download(new TransactionExport("0","0","0",$request->end_date),'transactions.xls');
         }
 
     }

@@ -7,10 +7,15 @@ use App\Models\Airtime_Transactions;
 use Maatwebsite\Excel\Concerns\Exportable;
 use Illuminate\Contracts\Support\Responsable;
 use Maatwebsite\Excel\Concerns\FromQuery;
+use PhpOffice\PhpSpreadsheet\Cell\Cell;
+use Maatwebsite\Excel\Concerns\ToModel;
+use PhpOffice\PhpSpreadsheet\Cell\DataType;
+use Maatwebsite\Excel\Concerns\WithCustomValueBinder;
+use PhpOffice\PhpSpreadsheet\Cell\DefaultValueBinder;
 use App\Models\User;
 
 
-class FailedExport implements FromQuery
+class FailedExport extends DefaultValueBinder implements FromQuery,  WithCustomValueBinder
 {
     /**
     * @return \Illuminate\Support\Collection
@@ -51,11 +56,33 @@ if(!empty($this->trackingId) && $this->phone == "0" && $this->from_date == "0" &
 //date
 return  $transQuery->whereBetween('transactionDate', [$this->from_date, $this->to_date]);
 
+}if($this->trackingId =="0" && $this->phone == "0" && !empty($this->from_date) && $this->to_date == "0"){
+
+    return $transQuery->where('transactionDate',  $this->from_date);
+
+}if($this->trackingId =="0" && $this->phone == "0" &&  $this->from_date == "0"  && !empty($this->to_date)){
+
+    return $transQuery->where('transactionDate', $this->to_date);
+
 }if($this->trackingId =="0" && $this->phone == "0" && $this->from_date == "0" && $this->to_date == "0"){
 
     return $transQuery->limit(100);
 }
 
+}
+
+
+    public function bindValue(Cell $cell, $value)
+    {
+        if (is_numeric($value)) {
+
+            $cell->setValueExplicit($value, DataType::TYPE_STRING);
+
+            return true;
+        }
+
+        // else return default behavior
+        return parent::bindValue($cell, $value);
     }
 
 
