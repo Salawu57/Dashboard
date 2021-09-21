@@ -83,7 +83,7 @@
 <div class="col-md-2">
 <div class="pull-right">
           <button type="submit"  class="btn btn-info search-btn "><i class="fa fa-file-excel-o"></i> Excel</button>
-          <!-- <button type="submit" class="btn btn-info search-btn "><i class="fa fa-file-text"></i> CSV</button> -->
+          <button type="submit" class="btn btn-info search-btn "><i class="fa fa-file-text"></i> CSV</button>
  </div>
 </form>
 </div>
